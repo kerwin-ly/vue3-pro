@@ -1,0 +1,10 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.inlineSuggest.enabled": true,
+  "volar.codeLens.pugTools": true,
+  "volar.codeLens.scriptSetupTools": true
+}
