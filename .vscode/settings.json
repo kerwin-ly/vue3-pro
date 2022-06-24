@@ -6,5 +6,6 @@
   },
   "editor.inlineSuggest.enabled": true,
   "volar.codeLens.pugTools": true,
-  "volar.codeLens.scriptSetupTools": true
+  "volar.codeLens.scriptSetupTools": true,
+  "editor.tabSize": 2
 }
