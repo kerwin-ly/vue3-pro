@@ -2,12 +2,12 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { union } from 'lodash-es';
 import Login from '@/modules/system/views/Login.vue';
 import { dashboardRoutes } from './routes/dashboard';
+import { App } from 'vue';
 
 const routes: RouteRecordRaw[] = union([
   {
     path: '/',
-    name: 'home',
-    component: () => import('@/modules/home/views/Home.vue'),
+    component: () => import('@/layouts/Index.vue'),
     children: union(dashboardRoutes)
   },
   {
@@ -23,7 +23,11 @@ const routes: RouteRecordRaw[] = union([
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  strict: true, // '/' slash is not allowed at the end of URL.
+  scrollBehavior: () => ({ left: 0, top: 0 })
 });
 
-export default router;
+export function setupRouter(app: App<Element>) {
+  app.use(router);
+}

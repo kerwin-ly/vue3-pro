@@ -26,10 +26,6 @@ yarn build
 yarn lint
 ```
 
-## 推荐阅读文档
+## TODO
 
-[官方文档-Vue3 新特性](https://v3.cn.vuejs.org/guide/migration/introduction.html#%E6%A6%82%E8%A7%88)
-
-[Vue3.0 新特性以及使用经验总结](https://juejin.cn/post/6940454764421316644)
-
-[Vue3 究竟好在哪里](https://zhuanlan.zhihu.com/p/133819602)
+1. dynamic import Antd-Design-Vue. Reference: https://2x.antdv.com/docs/vue/getting-started-cn
