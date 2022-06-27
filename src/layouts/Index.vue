@@ -68,4 +68,8 @@ export default defineComponent({
 .site-layout .site-layout-background {
   background: #fff;
 }
+
+.ant-layout {
+  height: 100vh;
+}
 </style>
