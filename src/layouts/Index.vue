@@ -2,10 +2,7 @@
   <a-layout>
     <layout-sidebar />
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
-        <menu-unfold-outlined v-if="collapsed" class="trigger" @click="toggleCollapsed(collapsed)" />
-        <menu-fold-outlined v-else class="trigger" @click="toggleCollapsed(collapsed)" />
-      </a-layout-header>
+      <layout-header></layout-header>
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
         <router-view v-slot="{ Component }">
           <transition name="move" mode="out-in">
@@ -27,6 +24,7 @@ import {
 } from '@ant-design/icons-vue';
 import { defineComponent } from 'vue';
 import LayoutSidebar from '@/layouts/components/LayoutSidebar.vue';
+import LayoutHeader from '@/layouts/components/LayoutHeader.vue';
 export default defineComponent({
   components: {
     UserOutlined,
@@ -34,7 +32,8 @@ export default defineComponent({
     UploadOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined,
-    LayoutSidebar
+    LayoutSidebar,
+    LayoutHeader
   },
   setup() {
     const { collapsed, toggleCollapsed } = useLayout();
