@@ -1,6 +1,6 @@
 <template>
   <a-menu mode="inline" theme="dark" :inline-collapsed="collapsed">
-    <template v-for="item in list" :key="item.key">
+    <template v-for="item in menus" :key="item.key">
       <template v-if="!item.children">
         <a-menu-item :key="item.key">
           <template #icon>
@@ -10,7 +10,7 @@
         </a-menu-item>
       </template>
       <template v-else>
-        <layout-sub-menu :key="item.key" :menu-info="item" />
+        <layout-sub-menu :key="item.key" :menu-item="item" />
       </template>
     </template>
   </a-menu>
@@ -18,8 +18,8 @@
 
 <script lang="ts">
 import { PieChartOutlined } from '@ant-design/icons-vue';
-import { defineComponent } from 'vue';
-import useLayout from '../useLayout';
+import { defineComponent, PropType } from 'vue';
+import { Menu } from '../types';
 import LayoutSubMenu from './LayoutSubMenu.vue';
 
 export default defineComponent({
@@ -28,28 +28,20 @@ export default defineComponent({
     LayoutSubMenu,
     PieChartOutlined
   },
-  setup() {
-    const { collapsed } = useLayout();
-    return {
-      list: [
-        {
-          key: '1',
-          title: 'Dashboard'
-        },
-        {
-          key: '2',
-          title: 'User',
-          children: [
-            {
-              key: '2.1',
-              title: 'User Info',
-              children: [{ key: '2.1.1', title: 'User List' }]
-            }
-          ]
-        }
-      ],
-      collapsed
-    };
+  props: {
+    menus: {
+      type: Array as PropType<Menu[]>,
+      default: () => []
+    },
+    collapsed: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(props) {
+    console.log(props.collapsed);
+
+    return {};
   }
 });
 </script>

@@ -1,8 +1,10 @@
 <template>
-  <a-sub-menu :key="menuInfo.key">
-    <template #icon><MailOutlined /></template>
-    <template #title>{{ menuInfo.title }}</template>
-    <template v-for="item in menuInfo.children" :key="item.key">
+  <a-sub-menu :key="menuItem.key">
+    <template #icon>
+      <MailOutlined />
+    </template>
+    <template #title>{{ menuItem.title }}</template>
+    <template v-for="item in menuItem.children" :key="item.key">
       <template v-if="!item.children">
         <a-menu-item :key="item.key">
           <template #icon>
@@ -12,7 +14,7 @@
         </a-menu-item>
       </template>
       <template v-else>
-        <layout-sub-menu :menu-info="item" :key="item.key" />
+        <layout-sub-menu :menu-item="item" :key="item.key" />
       </template>
     </template>
   </a-sub-menu>
@@ -20,7 +22,8 @@
 
 <script lang="ts">
 import { MailOutlined, PieChartOutlined } from '@ant-design/icons-vue';
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import { Menu } from '../types';
 
 export default defineComponent({
   name: 'LayoutSubMenu',
@@ -29,8 +32,8 @@ export default defineComponent({
     PieChartOutlined
   },
   props: {
-    menuInfo: {
-      type: Object,
+    menuItem: {
+      type: Object as PropType<Menu>,
       default: () => ({})
     }
   }
