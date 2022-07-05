@@ -3,13 +3,16 @@ import { RouteRecordRaw } from 'vue-router';
 export const dashboardRoutes: RouteRecordRaw[] = [
   {
     path: '',
-    redirect: { name: 'dashboard' }
+    redirect: { name: 'dashboard' },
+    meta: {
+      title: 'Home'
+    }
   },
   {
     path: 'dashboard',
     name: 'dashboard',
     meta: {
-      name: '首页'
+      title: 'Dashboard'
     },
     component: () => import('@/modules/dashboard/views/Index.vue')
   }

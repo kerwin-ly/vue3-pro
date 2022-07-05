@@ -8,7 +8,10 @@ const routes: RouteRecordRaw[] = union([
   {
     path: '/',
     component: () => import('@/layouts/Index.vue'),
-    children: union(dashboardRoutes)
+    children: union(dashboardRoutes),
+    meta: {
+      title: 'Home'
+    }
   },
   {
     path: '/login',

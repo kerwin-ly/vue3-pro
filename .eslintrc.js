@@ -3,13 +3,23 @@ module.exports = {
   env: {
     node: true
   },
+  parser: 'vue-eslint-parser',
   extends: [
     'plugin:vue/vue3-essential',
     'eslint:recommended',
     '@vue/typescript/recommended',
     'plugin:prettier/recommended'
   ],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx', '*.vue'],
+      rules: {
+        'no-undef': 'off'
+      }
+    }
+  ],
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 2020
   },
   rules: {

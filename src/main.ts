@@ -1,19 +1,21 @@
 import { createApp } from 'vue';
-import 'ant-design-vue/dist/antd.css';
 
 import App from './App.vue';
 import './registerServiceWorker';
 import { setupRouter } from './router';
 import { setupStore } from './store';
-import { registerGlobComp } from './components/antd/registerGlobComp';
+import { setupAntd, setupAssets } from './plugins';
 
 const app = createApp(App);
 
 // configure store with vuex
 setupStore(app);
 
-// register components, includes Antd and dynamic global components.
-registerGlobComp(app);
+// import global antd components
+setupAntd(app);
+
+// import static assets
+setupAssets();
 
 // configure router
 setupRouter(app);
