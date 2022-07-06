@@ -13,11 +13,16 @@
       </Breadcrumb>
     </Space>
     <Space :size="20">
-      <Dropdown placement="bottomRight">
-        <Avatar :src="avatar" :alt="userName">{{ userName }}</Avatar>
-        <!-- <template #overlay>
+      <Dropdown placement="topLeft" class="layout-header-right-item">
+        <div>
+          <Avatar :src="avatar" :alt="userName" :size="24"></Avatar>
+          <span class="username ml-sm">{{ userName }}</span>
+        </div>
+
+        <template #overlay>
           <Menu>
-            <Menu.Item @click="$router.push({ name: 'account-about' })">
+            123
+            <!-- <Menu.Item @click="$router.push({ name: 'account-about' })">
               {{ $t('routes.account.about') }}
             </Menu.Item>
             <Menu.Item @click="$router.push({ name: 'account-settings' })">
@@ -29,9 +34,9 @@
                 <poweroff-outlined />
                 {{ $t('layout.header.dropdownItemLoginOut') }}
               </div>
-            </Menu.Item>
+            </Menu.Item> -->
           </Menu>
-        </template> -->
+        </template>
       </Dropdown>
     </Space>
   </Layout.Header>
@@ -41,7 +46,7 @@
 import { useUserStore } from '@/store/modules';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
 import { computed } from '@vue/reactivity';
-import { Breadcrumb, Layout, Space, Dropdown, Menu, Avatar } from 'ant-design-vue';
+import { Breadcrumb, Layout, Space, Dropdown, Avatar } from 'ant-design-vue';
 import { RouteRecordRaw, useRoute, useRouter } from 'vue-router';
 
 const props = defineProps({
@@ -72,7 +77,7 @@ function navigate(routeItem: RouteRecordRaw): void {
   top: 0;
   z-index: 10;
   display: flex;
-  height: 64px;
+  height: @header-height;
   padding: 0 20px;
   justify-content: space-between;
   align-items: center;
@@ -81,6 +86,20 @@ function navigate(routeItem: RouteRecordRaw): void {
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  &-right {
+    &-item {
+      padding: 0 10px;
+
+      &:hover {
+        background-color: #f6f6f6;
+      }
+    }
+  }
+
+  .username {
+    color: #000000d9;
   }
 
   * {
