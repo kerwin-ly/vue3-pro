@@ -52,7 +52,7 @@ export const useUserStore = defineStore({
   }
 });
 
-// 在组件setup函数外使用
+// Need to be used outside the setup
 export function useUserStoreWithOut() {
   return useUserStore(store);
 }

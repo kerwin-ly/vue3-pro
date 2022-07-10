@@ -21,12 +21,11 @@
 
         <template #overlay>
           <Menu>
-            123
-            <!-- <Menu.Item @click="$router.push({ name: 'account-about' })">
-              {{ $t('routes.account.about') }}
+            <Menu.Item @click="$router.push({ name: 'account-about' })">
+              {{ t('routes.account.about') }}
             </Menu.Item>
             <Menu.Item @click="$router.push({ name: 'account-settings' })">
-              {{ $t('routes.account.settings') }}
+              {{ t('routes.account.settings') }}
             </Menu.Item>
             <Menu.Divider />
             <Menu.Item>
@@ -34,7 +33,7 @@
                 <poweroff-outlined />
                 {{ $t('layout.header.dropdownItemLoginOut') }}
               </div>
-            </Menu.Item> -->
+            </Menu.Item>
           </Menu>
         </template>
       </Dropdown>
@@ -43,10 +42,11 @@
 </template>
 
 <script lang="tsx" setup>
+import { useI18n } from '@/hooks/useI18n';
 import { useUserStore } from '@/store/modules';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
+import { MenuFoldOutlined, MenuUnfoldOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue';
 import { computed } from '@vue/reactivity';
-import { Breadcrumb, Layout, Space, Dropdown, Avatar } from 'ant-design-vue';
+import { Breadcrumb, Layout, Space, Dropdown, Avatar, Menu, Modal } from 'ant-design-vue';
 import { RouteRecordRaw, useRoute, useRouter } from 'vue-router';
 
 const props = defineProps({
@@ -60,6 +60,7 @@ const router = useRouter();
 const userStore = useUserStore();
 const userName = computed(() => userStore.name);
 const avatar = computed(() => userStore.avatar);
+const { t } = useI18n();
 
 function toggle(): void {
   emit('update:collapsed', !props.collapsed);
@@ -68,6 +69,17 @@ function toggle(): void {
 function navigate(routeItem: RouteRecordRaw): void {
   router.push({ name: routeItem.name });
 }
+
+const doLogout = () => {
+  Modal.confirm({
+    title: '您确定要退出登录吗？',
+    icon: <QuestionCircleOutlined />,
+    centered: true,
+    onOk: async () => {
+      // todo: redirect to login page
+    }
+  });
+};
 </script>
 
 <style lang="less" scoped>

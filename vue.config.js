@@ -13,5 +13,11 @@ module.exports = defineConfig({
       `
       }
     }
+  },
+  configureWebpack: (config) => {
+    // enable top-level `await` syntax
+    config.experiments = {
+      topLevelAwait: true
+    };
   }
 });
