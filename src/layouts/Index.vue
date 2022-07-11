@@ -65,10 +65,10 @@ export default defineComponent({
   }
 });
 </script>
-<style>
+<style lang="less">
 #components-layout-demo-custom-trigger .trigger {
   font-size: 18px;
-  line-height: 64px;
+  line-height: @header-height;
   padding: 0 24px;
   cursor: pointer;
   transition: color 0.3s;

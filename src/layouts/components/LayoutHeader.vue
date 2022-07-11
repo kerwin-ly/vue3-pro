@@ -88,6 +88,7 @@ const doLogout = () => {
   z-index: 10;
   display: flex;
   height: @header-height;
+  line-height: @header-height;
   padding: 0 20px;
   justify-content: space-between;
   align-items: center;
