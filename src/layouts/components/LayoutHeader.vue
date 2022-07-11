@@ -22,15 +22,15 @@
         <template #overlay>
           <Menu>
             <Menu.Item @click="$router.push({ name: 'account-about' })">
-              {{ t('routes.account.about') }}
+              {{ $t('routes.account.about') }}
             </Menu.Item>
             <Menu.Item @click="$router.push({ name: 'account-settings' })">
-              {{ t('routes.account.settings') }}
+              {{ $t('routes.account.settings') }}
             </Menu.Item>
             <Menu.Divider />
             <Menu.Item>
               <div @click.prevent="doLogout">
-                <poweroff-outlined />
+                <PoweroffOutlined />
                 {{ $t('layout.header.dropdownItemLoginOut') }}
               </div>
             </Menu.Item>
@@ -42,9 +42,8 @@
 </template>
 
 <script lang="tsx" setup>
-import { useI18n } from '@/hooks/useI18n';
 import { useUserStore } from '@/store/modules';
-import { MenuFoldOutlined, MenuUnfoldOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue';
+import { MenuFoldOutlined, MenuUnfoldOutlined, QuestionCircleOutlined, PoweroffOutlined } from '@ant-design/icons-vue';
 import { computed } from '@vue/reactivity';
 import { Breadcrumb, Layout, Space, Dropdown, Avatar, Menu, Modal } from 'ant-design-vue';
 import { RouteRecordRaw, useRoute, useRouter } from 'vue-router';
@@ -60,7 +59,6 @@ const router = useRouter();
 const userStore = useUserStore();
 const userName = computed(() => userStore.name);
 const avatar = computed(() => userStore.avatar);
-const { t } = useI18n();
 
 function toggle(): void {
   emit('update:collapsed', !props.collapsed);

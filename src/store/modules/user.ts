@@ -37,14 +37,12 @@ export const useUserStore = defineStore({
     }
   },
   actions: {
-    /** 清空token及用户信息 */
-    resetToken() {
+    clearUserInfo() {
       this.avatar = this.token = this.name = '';
       this.perms = [];
       this.menus = [];
       localStorage.clear();
     },
-    /** 登录成功保存token */
     setToken(token: string) {
       this.token = token ?? '';
       localStorage.setItem(ACCESS_TOKEN_KEY, this.token);

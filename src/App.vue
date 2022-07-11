@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { watchEffect } from 'vue';
+import { onUnmounted, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { ConfigProvider } from 'ant-design-vue';
 import { transformI18n } from './hooks/useI18n';
@@ -16,10 +16,14 @@ import { useLocale } from '@/locales/useLocale';
 const route = useRoute();
 const { getAntdLocale } = useLocale();
 
-watchEffect(() => {
+const stop = watchEffect(() => {
   if (route.meta?.title) {
     document.title = transformI18n(route.meta.title as string);
   }
+});
+
+onUnmounted(() => {
+  stop();
 });
 </script>
 

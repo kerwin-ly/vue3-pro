@@ -38,9 +38,9 @@ export function useI18n(namespace?: string): {
 }
 
 /**
- * 国际化转换工具函数，主要用于处理动态路由的title
+ * convert title in dynamic route
  * @param {string} message message
- * @param isI18n  默认为true，获取对应的翻译文本,否则返回本身
+ * @param isI18n  default is true，translate the message
  * @returns message
  */
 export function transformI18n(message: string, isI18n = true) {
@@ -48,7 +48,7 @@ export function transformI18n(message: string, isI18n = true) {
     return '';
   }
 
-  // 处理动态路由的title, 格式 {zh_CN:"",en_US:""}
+  // object format: {zh_CN:"",en_US:""}
   if (typeof message === 'object') {
     return message[i18n.global?.locale];
   }

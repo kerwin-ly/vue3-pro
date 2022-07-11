@@ -5,19 +5,28 @@ import './registerServiceWorker';
 import { setupRouter } from './router';
 import { setupStore } from './store';
 import { setupAntd, setupAssets } from './plugins';
+import { setupI18n } from './locales';
 
 const app = createApp(App);
 
-// configure store with vuex
-setupStore(app);
+function setupPlugins() {
+  // configure store with pinia
+  setupStore(app);
 
-// import global antd components
-setupAntd(app);
+  // import global antd components
+  setupAntd(app);
 
-// import static assets
-setupAssets();
+  // import static assets
+  setupAssets();
 
-// configure router
-setupRouter(app);
+  // configure router
+  setupRouter(app);
+}
 
-app.mount('#app');
+async function setupApp() {
+  await setupI18n(app);
+  app.mount('#app');
+}
+
+setupPlugins();
+setupApp();

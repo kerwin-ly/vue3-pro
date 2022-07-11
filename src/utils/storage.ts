@@ -1,14 +1,13 @@
-// 默认缓存期限为7天
-const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7;
+const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7; // Default cache time is 7 days
 
 /**
- * 创建本地缓存对象
+ * Create a new storage instance.
  * @param {string=} prefixKey -
  * @param {Object} [storage=localStorage] - sessionStorage | localStorage
  */
 export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) => {
   /**
-   * 本地缓存类
+   * Local storage
    * @class Storage
    */
   const Storage = class {
@@ -19,12 +18,6 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
       return `${this.prefixKey}${key}`.toUpperCase();
     }
 
-    /**
-     * @description 设置缓存
-     * @param {string} key 缓存键
-     * @param {*} value 缓存值
-     * @param expire
-     */
     set(key: string, value: SafeAny, expire: number | null = DEFAULT_CACHE_TIME) {
       const stringData = JSON.stringify({
         value,
@@ -33,18 +26,13 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
       this.storage.setItem(this.getKey(key), stringData);
     }
 
-    /**
-     * 读取缓存
-     * @param {string} key 缓存键
-     * @param {*=} def 默认值
-     */
     get<T = SafeAny>(key: string, def: SafeAny = null): T {
       const item = this.storage.getItem(this.getKey(key));
       if (item) {
         try {
           const data = JSON.parse(item);
           const { value, expire } = data;
-          // 在有效期内直接返回
+          // if not expire, return value
           if (expire === null || expire >= Date.now()) {
             return value;
           }
@@ -56,39 +44,19 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
       return def;
     }
 
-    /**
-     * 从缓存删除某项
-     * @param {string} key
-     */
     remove(key: string) {
       console.log(key, '搜索');
       this.storage.removeItem(this.getKey(key));
     }
 
-    /**
-     * 清空所有缓存
-     * @memberOf Cache
-     */
     clear(): void {
       this.storage.clear();
     }
 
-    /**
-     * 设置cookie
-     * @param {string} name cookie 名称
-     * @param {*} value cookie 值
-     * @param {number=} expire 过期时间
-     * 如果过期时间为设置，默认关闭浏览器自动删除
-     * @example
-     */
     setCookie(name: string, value: SafeAny, expire: number | null = DEFAULT_CACHE_TIME) {
       document.cookie = `${this.getKey(name)}=${value}; Max-Age=${expire}`;
     }
 
-    /**
-     * 根据名字获取cookie值
-     * @param name
-     */
     getCookie(name: string): string {
       const cookieArr = document.cookie.split('; ');
       for (let i = 0, length = cookieArr.length; i < length; i++) {
@@ -100,17 +68,10 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
       return '';
     }
 
-    /**
-     * 根据名字删除指定的cookie
-     * @param {string} key
-     */
     removeCookie(key: string) {
       this.setCookie(key, 1, -1);
     }
 
-    /**
-     * 清空cookie，使所有cookie失效
-     */
     clearCookie(): void {
       const keys = document.cookie.match(/[^ =;]+(?==)/g);
       if (keys) {
