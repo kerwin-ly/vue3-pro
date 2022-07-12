@@ -38,9 +38,9 @@ export function useI18n(namespace?: string): {
 }
 
 /**
- * convert title in dynamic route
+ * Convert title in dynamic route
  * @param {string} message message
- * @param isI18n  default is true，translate the message
+ * @param isI18n  Default is true，translate the message
  * @returns message
  */
 export function transformI18n(message: string, isI18n = true) {
@@ -48,7 +48,7 @@ export function transformI18n(message: string, isI18n = true) {
     return '';
   }
 
-  // object format: {zh_CN:"",en_US:""}
+  // Object format: {zh_CN:"",en_US:""}
   if (typeof message === 'object') {
     return message[i18n.global?.locale];
   }
@@ -59,5 +59,5 @@ export function transformI18n(message: string, isI18n = true) {
   return message;
 }
 
-// 主要用于配合vscode i18nn ally插件的提示。此功能仅用于路由和菜单。请在其他地方使用 vue-i18n 的 useI18n
+// This function makes vscode i18nn ally plugin work.
 export const t = (key: string) => key;

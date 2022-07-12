@@ -45,7 +45,6 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
     }
 
     remove(key: string) {
-      console.log(key, '搜索');
       this.storage.removeItem(this.getKey(key));
     }
 

@@ -16,32 +16,20 @@
   </a-menu>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { PieChartOutlined } from '@ant-design/icons-vue';
-import { defineComponent, PropType } from 'vue';
+import { PropType } from 'vue';
 import { Menu } from '../types';
 import LayoutSubMenu from './LayoutSubMenu.vue';
 
-export default defineComponent({
-  name: 'LayoutMenu',
-  components: {
-    LayoutSubMenu,
-    PieChartOutlined
+defineProps({
+  menus: {
+    type: Array as PropType<Menu[]>,
+    default: () => []
   },
-  props: {
-    menus: {
-      type: Array as PropType<Menu[]>,
-      default: () => []
-    },
-    collapsed: {
-      type: Boolean,
-      default: false
-    }
-  },
-  setup(props) {
-    console.log(props.collapsed);
-
-    return {};
+  collapsed: {
+    type: Boolean,
+    default: false
   }
 });
 </script>
