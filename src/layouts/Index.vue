@@ -20,12 +20,14 @@ import { reactive, ref } from 'vue';
 import { LayoutMenu } from '@/layouts/components/Menu';
 import { LayoutHeader } from './components/Header';
 import { Layout } from 'ant-design-vue';
+import { useI18n } from '@/hooks/useI18n';
 
 const collapsed = ref<boolean>(false);
+const { t } = useI18n();
 const menus = reactive([
   {
     key: '1',
-    title: 'Dashboard'
+    title: t('routes.dashboard.dashboard')
   },
   {
     key: '2',

@@ -1,7 +1,7 @@
 <template>
   <Dropdown placement="topLeft">
     <div>
-      <img src="../../assets/svg/lang.svg" class="icon-lang" />
+      <img src="../../../../assets/svg/lang.svg" class="icon-lang" />
       <span v-if="showText" class="ml-sm">{{ getLocaleText }}</span>
     </div>
 
@@ -15,7 +15,7 @@
   </Dropdown>
 </template>
 
-<script lang="ts" setup>
+<script lang="tsx" setup>
 import { ref, watchEffect, unref, computed } from 'vue';
 import { Dropdown, Menu } from 'ant-design-vue';
 import { useLocale } from '@/locales/useLocale';
@@ -23,14 +23,8 @@ import { type LocaleType, localeList } from '@/locales/config';
 import type { MenuInfo } from 'ant-design-vue/lib/menu/src/interface';
 
 const props = defineProps({
-  /**
-   * Whether to display text
-   */
-  showText: { type: Boolean, default: true },
-  /**
-   * Whether to refresh the interface when changing
-   */
-  reload: { type: Boolean }
+  showText: { type: Boolean, default: true }, // Whether to display text
+  reload: { type: Boolean, default: true } // Whether to refresh the interface when changing
 });
 
 const selectedKeys = ref<string[]>([]);
@@ -52,6 +46,7 @@ watchEffect(() => {
 async function toggleLocale(lang: LocaleType | string) {
   await changeLocale(lang as LocaleType);
   selectedKeys.value = [lang as string];
+  console.log(props.reload);
   props.reload && location.reload();
 }
 

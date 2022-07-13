@@ -14,42 +14,22 @@
     </Space>
 
     <Space :size="20">
-      <LocalePicker class="layout-header-right-item" />
-      <Dropdown placement="topLeft" class="layout-header-right-item">
-        <div>
-          <Avatar :src="avatar" :alt="userName" :size="24"></Avatar>
-          <span class="username ml-sm">{{ userName }}</span>
-        </div>
-
-        <template #overlay>
-          <Menu>
-            <Menu.Item @click="$router.push({ name: 'account-about' })">
-              {{ $t('routes.account.about') }}
-            </Menu.Item>
-            <Menu.Item @click="$router.push({ name: 'account-settings' })">
-              {{ $t('routes.account.settings') }}
-            </Menu.Item>
-            <Menu.Divider />
-            <Menu.Item>
-              <div @click.prevent="doLogout">
-                <PoweroffOutlined />
-                {{ $t('layout.header.dropdownItemLoginOut') }}
-              </div>
-            </Menu.Item>
-          </Menu>
-        </template>
-      </Dropdown>
+      <div class="layout-header-right-item">
+        <LocalePicker />
+      </div>
+      <div class="layout-header-right-item">
+        <PersonalSettings />
+      </div>
     </Space>
   </Layout.Header>
 </template>
 
 <script lang="tsx" setup>
-import { useUserStore } from '@/store/modules';
-import { MenuFoldOutlined, MenuUnfoldOutlined, QuestionCircleOutlined, PoweroffOutlined } from '@ant-design/icons-vue';
-import { computed } from '@vue/reactivity';
-import { Breadcrumb, Layout, Space, Dropdown, Avatar, Menu, Modal } from 'ant-design-vue';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
+import { Breadcrumb, Layout, Space } from 'ant-design-vue';
 import { RouteRecordRaw, useRoute, useRouter } from 'vue-router';
-import { LocalePicker } from '@/components/LocalePicker';
+import LocalePicker from './components/LocalePicker.vue';
+import PersonalSettings from './components/PersonalSettings.vue';
 
 const props = defineProps({
   collapsed: {
@@ -59,9 +39,6 @@ const props = defineProps({
 const emit = defineEmits(['update:collapsed']);
 const route = useRoute();
 const router = useRouter();
-const userStore = useUserStore();
-const userName = computed(() => userStore.name);
-const avatar = computed(() => userStore.avatar);
 
 function toggle(): void {
   emit('update:collapsed', !props.collapsed);
@@ -70,17 +47,6 @@ function toggle(): void {
 function navigate(routeItem: RouteRecordRaw): void {
   router.push({ name: routeItem.name });
 }
-
-const doLogout = () => {
-  Modal.confirm({
-    title: '您确定要退出登录吗？',
-    icon: <QuestionCircleOutlined />,
-    centered: true,
-    onOk: async () => {
-      // todo: redirect to login page
-    }
-  });
-};
 </script>
 
 <style lang="less" scoped>
