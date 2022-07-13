@@ -49,7 +49,6 @@ import { MenuFoldOutlined, MenuUnfoldOutlined, QuestionCircleOutlined, PoweroffO
 import { computed } from '@vue/reactivity';
 import { Breadcrumb, Layout, Space, Dropdown, Avatar, Menu, Modal } from 'ant-design-vue';
 import { RouteRecordRaw, useRoute, useRouter } from 'vue-router';
-import { useI18n } from '@/hooks/useI18n';
 import { LocalePicker } from '@/components/LocalePicker';
 
 const props = defineProps({

@@ -18,7 +18,7 @@ export const useUserStore = defineStore({
   state: (): UserState => ({
     token: localStorage.getItem(ACCESS_TOKEN_KEY) || '',
     name: 'amdin',
-    avatar: 'https://qn.antdv.com/vue.png',
+    avatar: 'https://p9-passport.byteacctimg.com/img/user-avatar/96216b36a0912cddd0719b7c551b7c25~300x300.image',
     perms: [],
     menus: []
   }),

@@ -7,7 +7,7 @@ import { App } from 'vue';
 const routes: RouteRecordRaw[] = union([
   {
     path: '/',
-    component: () => import('@/layouts/Index.vue'),
+    component: () => import('@/layouts/index.vue'),
     children: union(dashboardRoutes),
     meta: {
       title: 'Home'

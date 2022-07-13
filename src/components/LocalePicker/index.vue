@@ -1,8 +1,8 @@
 <template>
-  <Dropdown placement="bottomRight">
+  <Dropdown placement="topLeft">
     <div>
       <img src="../../assets/svg/lang.svg" class="icon-lang" />
-      <span v-if="showText" class="ml-1">{{ getLocaleText }}</span>
+      <span v-if="showText" class="ml-sm">{{ getLocaleText }}</span>
     </div>
 
     <template #overlay>
@@ -65,6 +65,5 @@ function handleMenuClick({ key }: MenuInfo) {
 <style lang="less">
 .icon-lang {
   height: 14px;
-  padding-right: 5px;
 }
 </style>

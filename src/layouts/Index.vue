@@ -1,69 +1,44 @@
 <template>
-  <a-layout>
-    <a-layout-sider :trigger="null" collapsible :collapsed="collapsed">
-      <layout-menu :menus="menus"></layout-menu>
-    </a-layout-sider>
-    <a-layout>
+  <Layout>
+    <Layout.Sider :trigger="null" collapsible :collapsed="collapsed">
+      <LayoutMenu :menus="menus"></LayoutMenu>
+    </Layout.Sider>
+    <Layout>
       <layout-header v-model:collapsed="collapsed"></layout-header>
-      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+      <Layout.Content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
         <router-view v-slot="{ Component }">
           <transition name="move" mode="out-in">
             <component :is="Component" />
           </transition>
         </router-view>
-      </a-layout-content>
-    </a-layout>
-  </a-layout>
+      </Layout.Content>
+    </Layout>
+  </Layout>
 </template>
-<script lang="ts">
-import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined
-} from '@ant-design/icons-vue';
-import { defineComponent, reactive, ref } from 'vue';
-import LayoutHeader from '@/layouts/components/LayoutHeader.vue';
-import LayoutMenu from '@/layouts/components/LayoutMenu.vue';
+<script lang="ts" setup>
+import { reactive, ref } from 'vue';
+import { LayoutMenu } from '@/layouts/components/Menu';
+import { LayoutHeader } from './components/Header';
+import { Layout } from 'ant-design-vue';
 
-export default defineComponent({
-  components: {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    LayoutHeader,
-    LayoutMenu
+const collapsed = ref<boolean>(false);
+const menus = reactive([
+  {
+    key: '1',
+    title: 'Dashboard'
   },
-  setup() {
-    // const { collapsed, toggleCollapsed } = useLayout();
-    const collapsed = ref<boolean>(false);
-    const menus = reactive([
+  {
+    key: '2',
+    title: 'User',
+    children: [
       {
-        key: '1',
-        title: 'Dashboard'
-      },
-      {
-        key: '2',
-        title: 'User',
-        children: [
-          {
-            key: '2.1',
-            title: 'User Info',
-            children: [{ key: '2.1.1', title: 'User List' }]
-          }
-        ]
+        key: '2.1',
+        title: 'User Info',
+        children: [{ key: '2.1.1', title: 'User List' }]
       }
-    ]);
-
-    return {
-      collapsed,
-      menus
-    };
+    ]
   }
-});
+]);
 </script>
 <style lang="less">
 #components-layout-demo-custom-trigger .trigger {
