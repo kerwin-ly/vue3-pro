@@ -13,7 +13,7 @@
       </Breadcrumb>
     </Space>
 
-    <Space :size="20">
+    <Space>
       <div class="layout-header-right-item">
         <LocalePicker />
       </div>

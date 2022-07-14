@@ -16,6 +16,6 @@ export const dashboardRoutes: RouteRecordRaw[] = [
     meta: {
       title: t('routes.dashboard.dashboard')
     },
-    component: () => import('@/modules/dashboard/views/Index.vue')
+    component: () => import('@/modules/dashboard/views/Dashboard.vue')
   }
 ];

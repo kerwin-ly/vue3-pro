@@ -1,30 +1,26 @@
 <template>
-  <SubMenu :key="menuItem.key">
+  <Menu.SubMenu :key="menuItem.key">
     <template #icon>
-      <MailOutlined />
+      <Component :is="menuItem.icon" />
     </template>
-    <template #title>{{ menuItem.title }}</template>
-    <template v-for="item in menuItem.children" :key="item.key">
-      <template v-if="!item.children">
-        <Menu.Item :key="item.key">
-          <template #icon>
-            <PieChartOutlined />
-          </template>
-          {{ item.title }}
+    <template #title>{{ menuItem.name }}</template>
+    <template v-for="subItem in menuItem.children" :key="subItem.key">
+      <template v-if="!subItem.children">
+        <Menu.Item :key="subItem.key">
+          {{ subItem.name }}
         </Menu.Item>
       </template>
       <template v-else>
-        <LayoutSubMenu :menu-item="item" :key="item.key" />
+        <LayoutSubMenu :menu-item="subItem" :key="subItem.key" />
       </template>
     </template>
-  </SubMenu>
+  </Menu.SubMenu>
 </template>
 
 <script lang="ts" setup>
-import { MailOutlined, PieChartOutlined } from '@ant-design/icons-vue';
 import type { PropType } from 'vue';
 import type { Menu as IMenu } from '../typing';
-import { Menu, SubMenu } from 'ant-design-vue';
+import { Menu } from 'ant-design-vue';
 
 defineProps({
   menuItem: {

@@ -15,7 +15,7 @@
     </Layout>
   </Layout>
 </template>
-<script lang="ts" setup>
+<script lang="tsx" setup>
 import { reactive, ref } from 'vue';
 import { LayoutMenu } from '@/layouts/components/Menu';
 import { LayoutHeader } from './components/Header';
@@ -26,19 +26,15 @@ const collapsed = ref<boolean>(false);
 const { t } = useI18n();
 const menus = reactive([
   {
-    key: '1',
-    title: t('routes.dashboard.dashboard')
+    key: 'dashboard',
+    icon: 'PieChartOutlined',
+    name: t('routes.dashboard.dashboard')
   },
   {
-    key: '2',
-    title: 'User',
-    children: [
-      {
-        key: '2.1',
-        title: 'User Info',
-        children: [{ key: '2.1.1', title: 'User List' }]
-      }
-    ]
+    key: 'user',
+    name: t('routes.user.user'),
+    icon: 'UserOutlined',
+    children: [{ key: 'user-list', name: t('routes.user.userList') }]
   }
 ]);
 </script>

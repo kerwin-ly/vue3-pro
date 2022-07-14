@@ -3,14 +3,18 @@ import { union } from 'lodash-es';
 import Login from '@/modules/system/views/Login.vue';
 import { dashboardRoutes } from './routes/dashboard';
 import { App } from 'vue';
+import { userRoutes } from './routes/user';
+import { useI18n } from '@/hooks/useI18n';
+
+const { t } = useI18n();
 
 const routes: RouteRecordRaw[] = union([
   {
     path: '/',
     component: () => import('@/layouts/index.vue'),
-    children: union(dashboardRoutes),
+    children: union(dashboardRoutes, userRoutes),
     meta: {
-      title: 'Home'
+      title: t('routes.dashboard.home')
     }
   },
   {

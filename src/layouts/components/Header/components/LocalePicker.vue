@@ -46,7 +46,6 @@ watchEffect(() => {
 async function toggleLocale(lang: LocaleType | string) {
   await changeLocale(lang as LocaleType);
   selectedKeys.value = [lang as string];
-  console.log(props.reload);
   props.reload && location.reload();
 }
 
