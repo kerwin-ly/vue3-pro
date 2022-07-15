@@ -5,7 +5,7 @@
     </Layout.Sider>
     <Layout>
       <layout-header v-model:collapsed="collapsed"></layout-header>
-      <Layout.Content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+      <Layout.Content class="wrapper">
         <router-view v-slot="{ Component }">
           <transition name="move" mode="out-in">
             <component :is="Component" />
@@ -15,7 +15,7 @@
     </Layout>
   </Layout>
 </template>
-<script lang="tsx" setup>
+<script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { LayoutMenu } from '@/layouts/components/Menu';
 import { LayoutHeader } from './components/Header';
