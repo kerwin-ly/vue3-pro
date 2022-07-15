@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img src="../../../assets/images/logo.png" alt="" data-v-6e24d36a="" />
+    <img src="../../../assets/images/system/logo.png" alt="" data-v-6e24d36a="" />
   </div>
   <Menu mode="inline" theme="dark" :inline-collapsed="collapsed" @click="navigate">
     <template v-for="item in menus" :key="item.key">

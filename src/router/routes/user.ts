@@ -16,6 +16,6 @@ export const userRoutes: RouteRecordRaw[] = [
     meta: {
       title: t('routes.user.userList')
     },
-    component: () => import('@/modules/user/views/UserList.vue')
+    component: () => import('@/views/user/pages/UserList.vue')
   }
 ];

@@ -5,7 +5,7 @@
     </Layout.Sider>
     <Layout>
       <layout-header v-model:collapsed="collapsed"></layout-header>
-      <Layout.Content class="wrapper">
+      <Layout.Content>
         <router-view v-slot="{ Component }">
           <transition name="move" mode="out-in">
             <component :is="Component" />

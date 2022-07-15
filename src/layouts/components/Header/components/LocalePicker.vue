@@ -1,7 +1,7 @@
 <template>
   <Dropdown placement="topLeft">
     <div>
-      <img src="../../../../assets/svg/lang.svg" class="icon-lang" />
+      <img src="../../../../assets/images/system/lang.svg" class="icon-lang" />
       <span v-if="showText" class="ml-sm">{{ getLocaleText }}</span>
     </div>
 

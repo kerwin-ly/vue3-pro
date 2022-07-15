@@ -25,7 +25,3 @@ yarn build
 ```
 yarn lint
 ```
-
-## TODO
-
-1. dynamic import Antd-Design-Vue. Reference: https://2x.antdv.com/docs/vue/getting-started-cn

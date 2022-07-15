@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { union } from 'lodash-es';
-import Login from '@/modules/system/views/Login.vue';
+import Login from '@/views/system/pages/Login.vue';
 import { dashboardRoutes } from './routes/dashboard';
 import { App } from 'vue';
 import { userRoutes } from './routes/user';

@@ -14,5 +14,5 @@
       }
     }
   ],
-  "htmlWhitespaceSensitivity": "ignore"
+  "htmlWhitespaceSensitivity": "strict"
 }
