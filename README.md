@@ -5,7 +5,7 @@ Out-of-box solution to create enterprise applications, implemented with Vue3 + T
 ## Features
 
 - [x] Support to format code with `Prettier` + `ESLint` 
-- [x] Add Git commit rules and trigger it automatically
+- [x] Support `CommitLint` and `husky`
 - [x] Support multiple languages using `I18n`
 
 ## Project setup
