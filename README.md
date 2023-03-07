@@ -1,6 +1,6 @@
 # vue3-pro
 
-Out-of-box solution to create enterprise applications, implemented with Vue3 + TypeScript+ Antd Design.
+Out-of-box solution to create enterprise applications, implemented with Vue3 + TypeScript+ Antd Design + Pinia.
 
 ## Features
 
